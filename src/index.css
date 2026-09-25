@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+.main-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 9999px;
+}
+
+.main-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Dark mode */
+.dark .main-scrollbar::-webkit-scrollbar-thumb {
+  background: #374151;
+}
+
+.dark .main-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Chat scrollbar */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Dark mode */
+.dark .chat-scrollbar::-webkit-scrollbar-thumb {
+  background: #374151;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.dark .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Firefox */
+.chat-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+.dark .chat-scrollbar {
+  scrollbar-color: #374151 transparent;
+}
+
+button{
+  cursor: pointer;
+}
