@@ -35,6 +35,7 @@ import {
   askMeetingQuestion,
   deleteMeeting,
 } from "../services/api";
+import Plasma from "./Plasma";
 
 function Home() {
   const [file, setFile] = useState(null);
@@ -50,6 +51,7 @@ function Home() {
   const [collapsed, setCollapsed] = useState(false);
   const [recents, setRecents] = useState([]);
   const [selectedMeeting, setSelectedMeeting] = useState(null);
+  const [loadingRecents, setLoadingRecents] = useState(true);
 
   useEffect(() => {
     loadRecentMeetings();
@@ -59,9 +61,7 @@ function Home() {
     try {
       await deleteMeeting(meetingId);
 
-      setRecents((prev) =>
-        prev.filter((meeting) => meeting.id !== meetingId)
-      );
+      setRecents((prev) => prev.filter((meeting) => meeting.id !== meetingId));
 
       if (selectedMeeting?.id === meetingId) {
         setSelectedMeeting(null);
@@ -73,11 +73,14 @@ function Home() {
 
   async function loadRecentMeetings() {
     try {
-      const data = await getMeetings();
+      setLoadingRecents(true);
 
+      const data = await getMeetings();
       setRecents(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoadingRecents(false);
     }
   }
 
@@ -191,7 +194,23 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f7f7f8] font-[Manrope] text-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-black font-[Manrope] text-gray-900">
+      {/* Global Plasma Background */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <Plasma
+          color="#B497CF"
+          speed={1}
+          direction="forward"
+          scale={1}
+          opacity={1}
+          mouseInteractive={false}
+          renderScale={0.55}
+          maxDpr={1.5}
+          targetFps={60}
+          iterations={60}
+        />
+      </div>
+
       {/* Mobile menu button */}
       {collapsed && (
         <button
@@ -201,17 +220,14 @@ function Home() {
         fixed left-4 top-4 z-50
         flex h-10 w-10 items-center justify-center
         rounded-lg
-        border border-gray-200
-        bg-white
-        text-gray-700
+        border border-white/10
+        bg-black/20
+        text-white
         shadow-sm
+        backdrop-blur-xl
         transition-all duration-200
         hover:scale-105
-        hover:bg-gray-100
-        dark:border-gray-700
-        dark:bg-gray-900
-        dark:text-gray-200
-        dark:hover:bg-gray-800
+        hover:bg-white/10
         lg:hidden
       "
         >
@@ -222,13 +238,15 @@ function Home() {
       {/* Mobile backdrop */}
       {!collapsed && (
         <div
-          className="fixed inset-0 z-40 bg-black/30 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm lg:hidden"
           onClick={() => setCollapsed(true)}
         />
       )}
+
       {/* Sidebar */}
       <Sidebar
         recents={recents}
+        loadingRecents={loadingRecents}
         onNewMeeting={newMeeting}
         onSelectMeeting={selectMeeting}
         onDeleteMeeting={handleDeleteMeeting}
@@ -239,20 +257,21 @@ function Home() {
 
       {/* Main */}
       <main
-        className={`main-scrollbar
+        className={`
+          main-scrollbar
+          relative
+          z-10
           h-screen
           overflow-y-auto
+          bg-transparent
+          text-white
           transition-all
           duration-300
           ease-in-out
-          bg-gray-50
-          text-gray-900
-          dark:bg-gray-900
-          dark:text-gray-100
-          ${collapsed ? "ml-0 lg:ml-17" : "ml-0 lg:ml-64"}
+          ${collapsed ? "ml-0 lg:ml-[68px]" : "ml-0 lg:ml-64"}
         `}
       >
-        <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10 overflow-y-hidden">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10 overflow-y-hidden">
           {/* Top Header */}
           <div className="mb-6 flex items-center justify-end">
             <UserAvatar />
@@ -492,55 +511,90 @@ function Home() {
                 transition={{ duration: 0.45 }}
                 className="space-y-8"
               >
-                {/* Meeting information */}
-                <div
-                  className="rounded-2xl
-                    border border-gray-200
-                    bg-white
-                    p-6
-                    shadow-sm
-                    dark:border-gray-800
-                    dark:bg-gray-800/50"
+                {/* Meeting Information */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="
+        rounded-2xl
+        border border-white/10
+        bg-white/[0.06]
+        p-6
+        shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+        backdrop-blur-xl
+        transition-all
+        duration-300
+        hover:border-white/15
+        hover:bg-white/[0.08]
+      "
                 >
                   <div className="flex items-start gap-4">
+                    {/* Source Icon */}
                     <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center
-                        rounded-xl
-                        bg-gray-100
-                        dark:bg-gray-700"
+                      className="
+            flex
+            h-11
+            w-11
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            border
+            border-white/10
+            bg-white/[0.08]
+            shadow-inner
+            backdrop-blur-md
+          "
                     >
                       {result.source ? (
                         <img
                           src={youtubeLogo}
                           alt="YouTube"
-                          className="h-6 w-6"
+                          className="h-6 w-6 object-contain"
                         />
                       ) : (
-                        <FileAudio size={19} />
+                        <FileAudio size={19} className="text-white/80" />
                       )}
                     </div>
 
+                    {/* Meeting Details */}
                     <div className="min-w-0">
-                      <h2 className="truncate font-semibold">
+                      <h2
+                        className="
+              truncate
+              font-semibold
+              text-white
+            "
+                      >
                         {result.title || "Video"}
                       </h2>
 
                       <div
-                        className="mt-1 flex items-center gap-2
-                        text-xs text-gray-400 dark:text-gray-500"
+                        className="
+              mt-1
+              flex
+              items-center
+              gap-2
+              text-xs
+              text-white/45
+            "
                       >
                         <Clock3 size={13} />
-                        Video analyzed successfully
+                        <span>Video analyzed successfully</span>
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Summary */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
+                  transition={{
+                    delay: 0.1,
+                    duration: 0.4,
+                  }}
                 >
                   <Summary
                     summary={result.summary}
@@ -553,8 +607,18 @@ function Home() {
                 <AnimatePresence>
                   {summaryComplete && (
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{
+                        opacity: 0,
+                        y: 20,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: 10,
+                      }}
                       transition={{
                         duration: 0.5,
                         ease: "easeOut",

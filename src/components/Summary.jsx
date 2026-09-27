@@ -44,27 +44,38 @@ function Summary({ summary, animate = true, onComplete }) {
 
   return (
     <section>
+      {/* Heading */}
       <h2
         className="
-          mb-3 text-xl font-semibold
-          text-gray-900 dark:text-gray-100
+          mb-3
+          text-xl
+          font-semibold
+          text-white
         "
       >
         Summary
       </h2>
 
+      {/* Glass Summary Card */}
       <div
         className="
-          rounded-2xl border border-gray-200
-          bg-white p-6 shadow-sm
-          transition-colors duration-300
-          dark:border-gray-800 dark:bg-gray-900
+          rounded-2xl
+          border border-white/10
+          bg-white/[0.06]
+          p-6
+          shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+          backdrop-blur-xl
+          transition-all
+          duration-300
+          hover:border-white/15
+          hover:bg-white/[0.08]
         "
       >
         <div
           className="
-            text-[15px] leading-7
-            text-gray-700 dark:text-gray-300
+            text-[15px]
+            leading-7
+            text-white/70
           "
         >
           <ReactMarkdown
@@ -72,9 +83,12 @@ function Summary({ summary, animate = true, onComplete }) {
               h2: ({ children }) => (
                 <h2
                   className="
-                    mb-3 mt-6 first:mt-0
-                    text-base font-semibold
-                    text-gray-900 dark:text-gray-100
+                    mb-3
+                    mt-6
+                    first:mt-0
+                    text-base
+                    font-semibold
+                    text-white
                   "
                 >
                   {children}
@@ -82,7 +96,12 @@ function Summary({ summary, animate = true, onComplete }) {
               ),
 
               strong: ({ children }) => (
-                <strong className="font-semibold text-gray-900 dark:text-gray-100">
+                <strong
+                  className="
+                    font-semibold
+                    text-white
+                  "
+                >
                   {children}
                 </strong>
               ),
@@ -90,9 +109,11 @@ function Summary({ summary, animate = true, onComplete }) {
               ul: ({ children }) => (
                 <ul
                   className="
-                    mb-4 ml-5 list-disc space-y-2
-                    marker:text-gray-400
-                    dark:marker:text-gray-600
+                    mb-4
+                    ml-5
+                    list-disc
+                    space-y-2
+                    marker:text-white/40
                   "
                 >
                   {children}
@@ -115,7 +136,7 @@ function Summary({ summary, animate = true, onComplete }) {
                 <hr
                   className="
                     my-5
-                    border-gray-200 dark:border-gray-800
+                    border-white/10
                   "
                 />
               ),
@@ -128,10 +149,13 @@ function Summary({ summary, animate = true, onComplete }) {
           {animate && displayedSummary.length < summary.length && (
             <span
               className="
-                ml-1 inline-block h-4 w-0.5
+                ml-1
+                inline-block
+                h-4
+                w-0.5
                 translate-y-0.5
                 animate-pulse
-                bg-gray-500 dark:bg-gray-400
+                bg-purple-300/80
               "
             />
           )}

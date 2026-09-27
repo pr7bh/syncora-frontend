@@ -2,6 +2,7 @@ import { useTheme } from "../context/ThemeContext";
 import lightLogo from "../assets/logo-light-mode.png";
 import darkLogo from "../assets/logo-dark-mode.png";
 import { deleteMeeting } from "../services/api";
+import SpecularButton from "./SpecularButton";
 import { useState } from "react";
 import {
   PanelLeft,
@@ -17,6 +18,7 @@ import {
 
 function Sidebar({
   recents,
+  loadingRecents,
   onNewMeeting,
   onSelectMeeting,
   onDeleteMeeting,
@@ -26,35 +28,30 @@ function Sidebar({
 }) {
   const { darkMode, toggleTheme } = useTheme();
   const [openMenuId, setOpenMenuId] = useState(null);
-  async function handleDeleteMeeting(meetingId) {
-    try {
-      await deleteMeeting(meetingId);
-
-      // Remove it from the sidebar
-      setRecents((prev) => prev.filter((meeting) => meeting.id !== meetingId));
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   return (
     <aside
-      className={`fixed left-0 top-0 z-50 h-screen border-r
-            border-gray-200 bg-white
-            text-gray-900
-            transition-transform duration-300 ease-in-out
-            dark:border-gray-800
-            dark:bg-gray-950
-            dark:text-gray-100
+      className={`
+        fixed left-0 top-0 z-50 h-screen
+        border-r border-white/10
+        bg-white/10
+        text-gray-900
+        shadow-2xl
+        backdrop-blur-2xl
+        transition-transform duration-300 ease-in-out
 
-            ${
-              collapsed
-                ? "-translate-x-full lg:w-17 lg:translate-x-0"
-                : "w-64 translate-x-0"
-            }
+        dark:border-white/10
+        dark:bg-black/20
+        dark:text-gray-100
 
-            lg:transition-all
-          `}
+        ${
+          collapsed
+            ? "-translate-x-full lg:w-17 lg:translate-x-0"
+            : "w-64 translate-x-0"
+        }
+
+        lg:transition-all
+      `}
     >
       <div className="flex h-full flex-col p-3">
         {/* Header */}
@@ -93,19 +90,27 @@ function Sidebar({
             onClick={() => setCollapsed(!collapsed)}
             title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             className="
-              hidden lg:flex
-              h-9 w-9
-              items-center justify-center
-              rounded-lg
-              text-gray-500
-              transition-all duration-200
-              hover:bg-gray-100
-              hover:text-gray-900
-              hover:scale-105
-              dark:text-gray-400
-              dark:hover:bg-gray-800
-              dark:hover:text-white
-            "
+  hidden
+  h-9
+  w-9
+  items-center
+  justify-center
+  rounded-xl
+  border
+  border-white/10
+  bg-white/5
+  text-gray-500
+  backdrop-blur-md
+  transition-all
+  duration-200
+  hover:bg-white/10
+  hover:text-gray-900
+  hover:scale-105
+  dark:text-gray-400
+  dark:hover:bg-white/10
+  dark:hover:text-white
+  lg:flex
+"
           >
             {collapsed ? <PanelLeft size={19} /> : <PanelLeftClose size={19} />}
           </button>
@@ -123,7 +128,7 @@ function Sidebar({
               hover:text-gray-900
               hover:scale-105
               dark:text-gray-400
-              dark:hover:bg-gray-800
+              dark:hover:bg-transparent
               dark:hover:text-white
             "
             aria-label="Close sidebar"
@@ -133,53 +138,132 @@ function Sidebar({
         </div>
 
         {/* New Meeting */}
-        <button
-          onClick={onNewMeeting}
-          title={collapsed ? "New Video" : undefined}
-          className={`mb-6 flex h-10 items-center rounded-lg
-            border border-gray-200
-            text-sm font-medium
-            hover:bg-gray-100
-            dark:border-gray-800
-            dark:hover:bg-gray-800
-            transition
-            ${collapsed ? "justify-center w-full" : "w-full gap-2 px-3"}`}
-        >
-          <Plus size={19} />
+        {/* New Video */}
+        <div className={`mb-6 ${collapsed ? "flex justify-center" : "block"}`}>
+  <SpecularButton
+    type="button"
+    onClick={onNewMeeting}
+    title={collapsed ? "New Video" : undefined}
+    size="md"
+    radius={14}
+    tint="#ffffff"
+    tintOpacity={0.08}
+    blur={8}
+    textColor="#f5f5f5"
+    lineColor="#ffffff"
+    baseColor="#000000"
+    intensity={0.8}
+    shineSize={10}
+    shineFade={40}
+    thickness={1}
+    speed={0.35}
+    followMouse
+    proximity={180}
+    autoAnimate={false}
+    className={
+      collapsed
+        ? "h-10 w-10"
+        : "h-10 w-full"
+    }
+  >
+    <div className="flex h-full w-full items-center justify-center gap-2">
+      <Plus size={18} />
 
-          {!collapsed && <span>New Video</span>}
-        </button>
+      {!collapsed && <span>New Video</span>}
+    </div>
+  </SpecularButton>
+</div>
 
         {/* Recents */}
         <div className="min-w-0">
-          {!collapsed && (
-            <h2 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              Recents
-            </h2>
-          )}
+  {!collapsed && (
+    <h2 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+      Recents
+    </h2>
+  )}
 
-          {recents.length === 0 ? (
-            !collapsed && (
-              <p className="px-2 text-sm text-gray-400">No recent meetings</p>
-            )
-          ) : (
+  {loadingRecents ? (
+    <div className="space-y-1">
+      {[1, 2, 3, 4, 5].map((item) => (
+        <div
+          key={item}
+          className={`
+            flex
+            h-10
+            w-full
+            items-center
+            rounded-xl
+            border
+            border-white/10
+            bg-white/[0.04]
+            animate-pulse
+            ${collapsed ? "justify-center" : "gap-2 px-2"}
+          `}
+        >
+          {/* File icon skeleton */}
+          <div className="h-4 w-4 shrink-0 rounded bg-white/10" />
+
+          {/* Text skeleton */}
+          {!collapsed && (
+            <div className="h-3 flex-1 rounded bg-white/10" />
+          )}
+        </div>
+      ))}
+    </div>
+  ) : recents.length === 0 ? (
+    !collapsed && (
+      <p className="px-2 text-sm text-white/40">
+        No recent meetings
+      </p>
+    )
+  ) : (
             <div className="chat-scrollbar space-y-1">
               {recents.map((meeting) => (
                 <div
                   key={meeting.id}
-                  className={`group relative flex h-10 w-full items-center rounded-lg
-        text-left text-sm transition
-        ${
-          selectedMeetingId === meeting.id
-            ? "bg-gray-200 font-medium text-gray-900 dark:bg-gray-800 dark:text-white"
-            : "text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-white"
-        }
-        ${collapsed ? "justify-center" : "gap-2 px-2"}
-      `}
+                  className={`
+  group
+  relative
+  flex
+  h-10
+  w-full
+  items-center
+  rounded-xl
+  border
+  text-left
+  text-sm
+  transition-all
+  duration-200
+
+  ${
+    selectedMeetingId === meeting.id
+      ? `
+        border-purple-400/30
+        bg-white/15
+        text-gray-900
+        shadow-sm
+        dark:border-purple-400/20
+        dark:bg-white/10
+        dark:text-white
+      `
+      : `
+        border-transparent
+        text-gray-700
+        hover:border-white/10
+        hover:bg-white/10
+        hover:text-gray-900
+        dark:text-gray-300
+        dark:hover:bg-white/5
+        dark:hover:text-white
+      `
+  }
+
+  ${collapsed ? "justify-center" : "gap-2 px-2"}
+`}
                 >
                   {/* Selected indicator */}
                   {selectedMeetingId === meeting.id && !collapsed && (
-                    <span className="absolute left-0 h-5 w-0.5 rounded-full bg-blue-500" />
+                    <span className="absolute left-0 h-5 w-0.5 rounded-full bg-purple-500" />
                   )}
 
                   {/* Meeting */}
@@ -241,20 +325,18 @@ function Sidebar({
                         <div
                           onClick={(event) => event.stopPropagation()}
                           className="
-                absolute
-                right-0
-                top-8
-                z-50
-                w-32
-                rounded-lg
-                border
-                border-gray-200
-                bg-white
-                p-1
-                shadow-lg
-                dark:border-gray-700
-                dark:bg-gray-900
-              "
+  absolute
+  right-0
+  top-8
+  z-50
+  w-32
+  rounded-xl
+  border border-white/15
+  bg-black/60
+  p-1
+  shadow-2xl
+  backdrop-blur-xl
+"
                         >
                           <button
                             type="button"
@@ -263,20 +345,19 @@ function Sidebar({
                               onDeleteMeeting(meeting.id);
                             }}
                             className="
-                  flex
-                  w-full
-                  items-center
-                  gap-2
-                  rounded-md
-                  px-3
-                  py-2
-                  text-sm
-                  text-red-600
-                  transition
-                  hover:bg-red-50
-                  dark:text-red-400
-                  dark:hover:bg-red-950/40
-                "
+  flex
+  w-full
+  items-center
+  gap-2
+  rounded-lg
+  px-3
+  py-2
+  text-sm
+  text-red-400
+  transition
+  hover:bg-red-500/10
+  hover:text-red-300
+"
                           >
                             <Trash2 size={15} />
                             Delete
@@ -294,7 +375,7 @@ function Sidebar({
         {/* Bottom section */}
         <div className="mt-auto">
           {/* Theme Button */}
-          <button
+          {/* <button
             onClick={toggleTheme}
             title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             className={`mb-2 flex h-10 w-full items-center rounded-lg
@@ -311,7 +392,7 @@ function Sidebar({
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
 
             {!collapsed && <span>{darkMode ? "Light mode" : "Dark mode"}</span>}
-          </button>
+          </button> */}
 
           {/* Footer */}
           <div

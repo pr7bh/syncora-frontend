@@ -63,12 +63,12 @@ export default function UserAvatar() {
   }, [user]);
 
   return (
-    <div className="relative">
+    <div className="">
       {/* Avatar button */}
       <button
         type="button"
         onClick={handleAvatarClick}
-        className="absolute right-[0.1rem] top-2 h-10 w-10 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 hover:scale-105
+        className="absolute right-4 top-4 h-10 w-10 z-99 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 hover:scale-105
                 hover:ring-2
                 hover:ring-blue-500/50
                 hover:ring-offset-2
@@ -99,7 +99,7 @@ export default function UserAvatar() {
             onClick={() => setIsOpen(false)}
           />
 
-          <div className="absolute right-0 top-12 z-50 w-72 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-900">
+          <div className="absolute right-4 top-15 z-50 w-72 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-900">
             {/* User information */}
             <div className="flex items-center gap-3 border-b border-gray-200 p-4 dark:border-gray-700">
               <div className="h-10 w-10 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700">
