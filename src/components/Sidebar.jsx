@@ -114,27 +114,6 @@ function Sidebar({
           >
             {collapsed ? <PanelLeft size={19} /> : <PanelLeftClose size={19} />}
           </button>
-          <button
-            type="button"
-            onClick={() => setCollapsed(true)}
-            className="
-              flex lg:hidden
-              h-9 w-9
-              items-center justify-center
-              rounded-lg
-              text-gray-500
-              transition-all duration-200
-              hover:bg-gray-100
-              hover:text-gray-900
-              hover:scale-105
-              dark:text-gray-400
-              dark:hover:bg-transparent
-              dark:hover:text-white
-            "
-            aria-label="Close sidebar"
-          >
-            <X size={20} />
-          </button>
         </div>
 
         {/* New Meeting */}
@@ -195,7 +174,7 @@ function Sidebar({
             rounded-xl
             border
             border-white/10
-            bg-white/[0.04]
+            bg-white/4
             animate-pulse
             ${collapsed ? "justify-center" : "gap-2 px-2"}
           `}

@@ -93,16 +93,51 @@ export default function UserAvatar() {
       {/* Popup */}
       {isOpen && (
         <>
-          {/* Optional backdrop for mobile/outside area */}
+          {/* Backdrop */}
           <div
-            className="fixed inset-0 z-40"
+            className="
+        fixed inset-0 z-40
+        bg-black/10
+        backdrop-blur-[2px]
+      "
             onClick={() => setIsOpen(false)}
           />
 
-          <div className="absolute right-4 top-15 z-50 w-72 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-900">
-            {/* User information */}
-            <div className="flex items-center gap-3 border-b border-gray-200 p-4 dark:border-gray-700">
-              <div className="h-10 w-10 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700">
+          {/* Glass Popup */}
+          <div
+            className="
+        absolute right-4 top-15 z-50
+        w-72
+        overflow-hidden
+        rounded-2xl
+        border border-white/10
+        bg-black/40
+        shadow-[0_20px_50px_rgba(0,0,0,0.35)]
+        backdrop-blur-2xl
+        transition-all duration-300
+      "
+          >
+            {/* User Information */}
+            <div
+              className="
+          flex items-center gap-3
+          border-b border-white/10
+          bg-white/[0.03]
+          p-4
+        "
+            >
+              {/* Profile Image */}
+              <div
+                className="
+            h-10 w-10
+            shrink-0
+            overflow-hidden
+            rounded-full
+            border border-white/15
+            bg-white/[0.08]
+            shadow-inner
+          "
+              >
                 {profileImage ? (
                   <img
                     src={profileImage}
@@ -114,66 +149,147 @@ export default function UserAvatar() {
                     }}
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
+                  <div
+                    className="
+                flex h-full w-full
+                items-center justify-center
+                text-white/60
+              "
+                  >
                     <User size={20} />
                   </div>
                 )}
               </div>
 
+              {/* User Details */}
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-semibold text-gray-900 dark:text-white">
+                <p className="truncate text-sm font-semibold text-white">
                   {displayName}
                 </p>
 
-                <p className="truncate text-xs text-gray-500 dark:text-gray-400">
-                  {email}
-                </p>
+                <p className="mt-0.5 truncate text-xs text-white/40">{email}</p>
               </div>
-
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-              >
-                <X size={17} />
-              </button>
             </div>
 
-            {/* Profile picture options */}
-            <div className="p-2">
+            {/* Profile Picture Options */}
+            <div className="space-y-1 p-2">
+              {/* Change Profile Picture */}
               <button
                 type="button"
                 onClick={handleChangePhoto}
                 disabled={uploading}
-                className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-gray-700 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:text-gray-200 dark:hover:bg-gray-800"
+                className="
+            flex w-full items-center gap-3
+            rounded-xl
+            border border-transparent
+            px-3 py-2.5
+            text-sm text-white/70
+            transition-all duration-200
+            hover:border-white/10
+            hover:bg-white/[0.07]
+            hover:text-white
+            disabled:cursor-not-allowed
+            disabled:opacity-40
+          "
               >
-                <Camera size={18} />
+                <div
+                  className="
+              flex h-8 w-8
+              shrink-0
+              items-center justify-center
+              rounded-lg
+              border border-white/10
+              bg-white/[0.06]
+              text-white/70
+            "
+                >
+                  {uploading ? (
+                    <div
+                      className="
+                  h-4 w-4
+                  animate-spin
+                  rounded-full
+                  border-2
+                  border-white/20
+                  border-t-white
+                "
+                    />
+                  ) : (
+                    <Camera size={17} />
+                  )}
+                </div>
 
                 <span>
                   {uploading ? "Uploading..." : "Change profile picture"}
                 </span>
               </button>
 
-              {profileImage && (
+              {/* Remove Profile Picture */}
+              {profileImage && !uploading && (
                 <button
                   type="button"
                   onClick={handleRemovePhoto}
-                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="
+              flex w-full items-center gap-3
+              rounded-xl
+              border border-transparent
+              px-3 py-2.5
+              text-sm text-white/70
+              transition-all duration-200
+              hover:border-white/10
+              hover:bg-white/[0.07]
+              hover:text-white
+            "
                 >
-                  <User size={18} />
+                  <div
+                    className="
+                flex h-8 w-8
+                shrink-0
+                items-center justify-center
+                rounded-lg
+                border border-white/10
+                bg-white/[0.06]
+                text-white/70
+              "
+                  >
+                    <User size={17} />
+                  </div>
+
                   <span>Remove profile picture</span>
                 </button>
               )}
             </div>
 
             {/* Logout */}
-            <div className="border-t border-gray-200 p-2 dark:border-gray-700">
+            <div className="border-t border-white/10 p-2">
               <button
                 type="button"
                 onClick={handleLogout}
-                className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-600 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/30"
+                className="
+            flex w-full items-center gap-3
+            rounded-xl
+            border border-transparent
+            px-3 py-2.5
+            text-sm text-red-400
+            transition-all duration-200
+            hover:border-red-400/10
+            hover:bg-red-500/10
+            hover:text-red-300
+          "
               >
-                <LogOut size={18} />
+                <div
+                  className="
+              flex h-8 w-8
+              shrink-0
+              items-center justify-center
+              rounded-lg
+              border border-red-400/10
+              bg-red-500/[0.06]
+            "
+                >
+                  <LogOut size={17} />
+                </div>
+
                 <span>Logout</span>
               </button>
             </div>
