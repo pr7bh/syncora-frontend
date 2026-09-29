@@ -126,7 +126,7 @@ export default function UserAvatar() {
               className="
           flex items-center gap-3
           border-b border-white/10
-          bg-white/[0.03]
+          bg-white/3
           p-4
         "
             >
@@ -138,7 +138,7 @@ export default function UserAvatar() {
             overflow-hidden
             rounded-full
             border border-white/15
-            bg-white/[0.08]
+            bg-white/8
             shadow-inner
           "
               >
@@ -203,7 +203,7 @@ export default function UserAvatar() {
               items-center justify-center
               rounded-lg
               border border-white/10
-              bg-white/[0.06]
+              bg-white/6
               text-white/70
             "
                 >
@@ -252,7 +252,7 @@ export default function UserAvatar() {
                 items-center justify-center
                 rounded-lg
                 border border-white/10
-                bg-white/[0.06]
+                bg-white/6
                 text-white/70
               "
                   >
@@ -288,7 +288,7 @@ export default function UserAvatar() {
               items-center justify-center
               rounded-lg
               border border-red-400/10
-              bg-red-500/[0.06]
+              bg-red-500/6
             "
                 >
                   <LogOut size={17} />

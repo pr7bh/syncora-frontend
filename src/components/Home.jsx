@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import light from "../assets/loader-light-mode.png";
-import dark from "../assets/loader-dark-mode.png";
+import dark from "../assets/logo-dark-mode.png";
 import lightLogo from "../assets/logo-light-mode.png";
 import darkLogo from "../assets/logo-dark-mode.png";
 import youtubeLogo from "../assets/youtube.svg";
@@ -268,7 +268,7 @@ function Home() {
           transition-all
           duration-300
           ease-in-out
-          ${collapsed ? "ml-0 lg:ml-[68px]" : "ml-0 lg:ml-64"}
+          ${collapsed ? "ml-0 lg:ml-17" : "ml-0 lg:ml-64"}
         `}
       >
         <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10 overflow-y-hidden">
@@ -519,14 +519,14 @@ function Home() {
                   className="
         rounded-2xl
         border border-white/10
-        bg-white/[0.06]
+        bg-white/6
         p-6
         shadow-[0_8px_32px_rgba(0,0,0,0.25)]
         backdrop-blur-xl
         transition-all
         duration-300
         hover:border-white/15
-        hover:bg-white/[0.08]
+        hover:bg-white/8
       "
                 >
                   <div className="flex items-start gap-4">
@@ -542,7 +542,7 @@ function Home() {
             rounded-xl
             border
             border-white/10
-            bg-white/[0.08]
+            bg-white/8
             shadow-inner
             backdrop-blur-md
           "

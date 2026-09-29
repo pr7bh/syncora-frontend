@@ -291,7 +291,7 @@ function Sidebar({
               hover:text-gray-900
               group-hover:flex
               dark:text-gray-400
-              dark:hover:bg-gray-700
+              dark:hover:bg-transparent
               dark:hover:text-white
             "
                         aria-label="Meeting options"

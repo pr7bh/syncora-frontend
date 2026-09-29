@@ -13,7 +13,7 @@ import {
 import {
   getCurrentUser,
 } from "../services/api";
-
+import PageLoader from "../components/PageLoader";
 const AuthContext = createContext(null);
 
 
@@ -87,7 +87,7 @@ export function AuthProvider({ children }) {
         logout,
       }}
     >
-      {children}
+      {loading ? <PageLoader /> : children}
     </AuthContext.Provider>
   );
 }
