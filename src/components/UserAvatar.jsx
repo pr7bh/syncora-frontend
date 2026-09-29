@@ -77,7 +77,11 @@ export default function UserAvatar() {
       >
         {profileImage ? (
           <img
-            src={profileImage}
+            src={
+              profileImage.startsWith("http")
+                ? profileImage
+                : `${API_URL}${profileImage}`
+            }
             alt="Profile"
             referrerPolicy="no-referrer"
             className="h-full w-full object-cover"
