@@ -2014,7 +2014,7 @@ export default function AeroShards({
     >
       <canvas
         ref={canvasRef}
-        className={`pointer-events-none absolute inset-0 block h-full w-full transition-opacity duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${ready ? 'opacity-100' : 'opacity-0'}`}
+        className={`pointer-events-none absolute inset-0 block h-full w-full transition-opacity duration-650 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${ready ? 'opacity-100' : 'opacity-0'}`}
       />
     </div>
   );

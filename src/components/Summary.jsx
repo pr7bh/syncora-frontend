@@ -61,14 +61,14 @@ function Summary({ summary, animate = true, onComplete }) {
         className="
           rounded-2xl
           border border-white/10
-          bg-white/[0.06]
+          bg-white/6
           p-6
           shadow-[0_8px_32px_rgba(0,0,0,0.25)]
           backdrop-blur-xl
           transition-all
           duration-300
           hover:border-white/15
-          hover:bg-white/[0.08]
+          hover:bg-white/8
         "
       >
         <div

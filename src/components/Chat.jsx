@@ -133,12 +133,12 @@ function Chat({
     overflow-hidden
     rounded-2xl
     border border-white/10
-    bg-white/[0.06]
+    bg-white/6
     shadow-[0_8px_32px_rgba(0,0,0,0.25)]
     backdrop-blur-xl
     transition-all duration-300
     hover:border-white/15
-    hover:bg-white/[0.08]
+    hover:bg-white/8
   "
       >
         {/* Messages */}
@@ -151,7 +151,7 @@ function Chat({
             items-center justify-center
             rounded-full
             border border-white/10
-            bg-white/[0.08]
+            bg-white/8
             text-white/80
             shadow-inner
             backdrop-blur-md
@@ -532,7 +532,7 @@ function Chat({
                 </div>
 
                 <div className="flex items-center gap-2 pt-2">
-                  <div className="flex items-center gap-1.5 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 backdrop-blur-md">
+                  <div className="flex items-center gap-1.5 rounded-2xl border border-white/10 bg-white/6 px-4 py-3 backdrop-blur-md">
                     <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-purple-300/60" />
 
                     <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-purple-300/60 [animation-delay:150ms]" />
@@ -553,7 +553,7 @@ function Chat({
           className="
     border-t
     border-white/10
-    bg-white/[0.03]
+    bg-white/3
     p-4
     backdrop-blur-xl
   "
@@ -566,14 +566,14 @@ function Chat({
       rounded-2xl
       border
       border-white/10
-      bg-white/[0.06]
+      bg-white/6
       p-2
       shadow-[0_8px_32px_rgba(0,0,0,0.2)]
       backdrop-blur-xl
       transition-all
       duration-300
       focus-within:border-white/20
-      focus-within:bg-white/[0.08]
+      focus-within:bg-white/8
       focus-within:shadow-[0_0_25px_rgba(168,85,247,0.08)]
     "
           >
