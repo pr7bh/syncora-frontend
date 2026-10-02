@@ -65,15 +65,31 @@ export default function UserAvatar() {
   return (
     <div className="">
       {/* Avatar button */}
+      {/* Avatar button */}
       <button
         type="button"
         onClick={handleAvatarClick}
-        className="absolute right-4 top-4 h-10 w-10 z-99 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700 hover:scale-105
-                hover:ring-2
-                hover:ring-blue-500/50
-                hover:ring-offset-2
-                hover:ring-offset-gray-50
-                dark:hover:ring-offset-gray-900"
+        className="
+    absolute right-4 top-4 z-99
+    h-10 w-10
+    overflow-hidden
+    rounded-full
+
+    border border-white/20
+    bg-white/6
+    backdrop-blur-xl
+    shadow-[0_4px_20px_rgba(0,0,0,0.2)]
+
+    transition-all duration-200
+    hover:scale-105
+    hover:border-white/30
+    hover:bg-white/12
+    hover:shadow-[0_6px_25px_rgba(180,151,207,0.25)]
+
+    focus:outline-none
+    focus:ring-2
+    focus:ring-[#b497cf]/40
+  "
       >
         {profileImage ? (
           <img
@@ -88,7 +104,16 @@ export default function UserAvatar() {
             onError={() => setProfileImage(null)}
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gray-900 text-sm font-semibold text-white">
+          <div
+            className="
+        flex h-full w-full
+        items-center justify-center
+        bg-white/6
+        text-sm font-semibold
+        text-white
+        backdrop-blur-xl
+      "
+          >
             {avatarLetter}
           </div>
         )}
