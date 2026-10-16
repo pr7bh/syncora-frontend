@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 import { registerUser } from "../services/api";
-
-import AeroShards from "./AeroShards";
 import SpecularButton from "./SpecularButton";
-import ParticleText from "./ParticleText";
+import logo from "../assets/logo-dark-mode.png"
+import Plasma from "./Plasma";
 
 export default function Register({ onSwitchToLogin }) {
 
@@ -46,43 +45,24 @@ export default function Register({ onSwitchToLogin }) {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-black font-[Manrope] text-gray-900">
 
       {/* ================= BACKGROUND ================= */}
 
-      <div className="absolute inset-0 z-0">
-        <AeroShards
-          backgroundColor="#120F17"
-          shardColor="#896ABD"
-          accentColor="#A855F7"
-          placement="full"
-          flow="stream"
-          material="pearl"
-          detail="balanced"
-          effect="none"
-          scale={1}
-          spread={1}
-          depth={1}
-          speed={1}
-          spin={1}
-          interaction="repel"
-          density={1.5}
-          shardSize={1.1}
-          stretch={1}
-          turbulence={1}
-          glow={1}
-          edgeSoftness={2}
-          bloom={0.5}
-          grain={0.05}
-          chromaticAberration={0.0075}
-          transitionDuration={1}
-          interactionRadius={1.5}
-          interactionStrength={0.5}
-          rippleIntensity={1}
-          holdToGather
-          paused={false}
-        />
-      </div>
+      <div className="pointer-events-none fixed inset-0 z-0">
+              <Plasma
+                color="#B497CF"
+                speed={1}
+                direction="forward"
+                scale={1}
+                opacity={1}
+                mouseInteractive={false}
+                renderScale={0.55}
+                maxDpr={1.5}
+                targetFps={60}
+                iterations={60}
+              />
+            </div>
 
       {/* ================= DARK OVERLAY ================= */}
 
@@ -96,28 +76,18 @@ export default function Register({ onSwitchToLogin }) {
 
           {/* Logo */}
 
-          <div className="mb-2 text-center">
-
-            <ParticleText
-              text="Syncora"
-              particleSize={2.2}
-              density={4}
-              color="#f8fafc"
-              highlightColor="#8b5cf6"
-              scatter={190}
-              gatherDuration={1600}
-              stagger={420}
-              pointerRepel={42}
-              repelRadius={120}
-              idleDrift={0.8}
-              trigger="mount"
-              fontSize="clamp(3.5rem, 13vw, 9rem)"
-              fontWeight={800}
-              fontFamily="inherit"
-              glow
-            />
-
-          </div>
+          
+                    <div className="flex flex-col items-center text-center">
+                <img
+                  src={logo}
+                  alt="Syncora Logo"
+                  className="h-20 w-auto object-contain"
+                />
+          
+                <h1 className="mt-3 text-5xl font-extrabold tracking-tight text-slate-50 mb-8">
+                  Syncora
+                </h1>
+              </div>
 
           {/* Register Card */}
 

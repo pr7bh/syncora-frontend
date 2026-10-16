@@ -7,18 +7,8 @@ import darkLogo from "../assets/logo-dark-mode.png";
 import youtubeLogo from "../assets/youtube.svg";
 import UserAvatar from "./UserAvatar";
 import {
-  Sparkles,
-  Upload,
-  ArrowUp,
   FileAudio,
-  FileVideo,
-  Loader2,
-  MessageSquare,
-  Bot,
-  User,
-  Plus,
   Clock3,
-  Play,
   Menu,
 } from "lucide-react";
 
@@ -217,19 +207,19 @@ function Home() {
           type="button"
           onClick={() => setCollapsed(false)}
           className="
-        fixed left-4 top-4 z-50
-        flex h-10 w-10 items-center justify-center
-        rounded-lg
-        border border-white/10
-        bg-black/20
-        text-white
-        shadow-sm
-        backdrop-blur-xl
-        transition-all duration-200
-        hover:scale-105
-        hover:bg-white/10
-        lg:hidden
-      "
+          fixed left-4 top-4 z-50
+          flex h-10 w-10 items-center justify-center
+          rounded-lg
+          border border-white/10
+          bg-black/20
+          text-white
+          shadow-sm
+          backdrop-blur-xl
+          transition-all duration-200
+          hover:scale-105
+          hover:bg-white/10
+          lg:hidden
+        "
         >
           <Menu size={21} />
         </button>
