@@ -280,12 +280,12 @@ export default function Register({ onSwitchToLogin }) {
                 size="lg"
                 radius={18}
                 tint="#ffffff"
-                tintOpacity={0}
-                blur={0}
+                tintOpacity={0.08}
+                blur={8}
                 textColor="#f5f5f5"
                 lineColor="#ffffff"
-                baseColor="#525252"
-                intensity={1}
+                baseColor="#ffffff"
+                intensity={0.8}
                 shineSize={10}
                 shineFade={40}
                 thickness={1}
