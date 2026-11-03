@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { uploadProfilePicture, API_URL } from "../services/api";
-import { Camera, LogOut, User } from "lucide-react";
+import { uploadProfilePicture, removeProfilePicture, API_URL } from "../services/api";
+import { Camera, LogOut, Trash2, User } from "lucide-react";
 
 import { useAuth } from "../context/AuthContext";
 
 export default function UserAvatar() {
-  const { user, logout } = useAuth();
+  const { user, setUser, logout } = useAuth();
   const avatarLetter = user?.username?.trim()?.charAt(0)?.toUpperCase() || "U";
   const [isOpen, setIsOpen] = useState(false);
   const [profileImage, setProfileImage] = useState(user?.profile_image || null);
@@ -45,8 +45,18 @@ export default function UserAvatar() {
     }
   }
 
-  // Persistent photo removal requires DELETE /api/auth/profile-picture on the backend.
-  // removeProfilePicture() in api.js is ready for integration once that endpoint exists.
+  async function handleRemovePhoto() {
+    try {
+      setUploading(true);
+      await removeProfilePicture();
+      setProfileImage(null);
+      setUser((prev) => prev ? { ...prev, profile_image: null } : prev);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setUploading(false);
+    }
+  }
 
   function handleLogout() {
     setIsOpen(false);
@@ -250,6 +260,42 @@ export default function UserAvatar() {
                   {uploading ? "Uploading..." : "Change profile picture"}
                 </span>
               </button>
+
+              {profileImage && (
+                <button
+                  type="button"
+                  onClick={handleRemovePhoto}
+                  disabled={uploading}
+                  className="
+              flex w-full items-center gap-3
+              rounded-xl
+              border border-transparent
+              px-3 py-2.5
+              text-sm text-white/70
+              transition-all duration-200
+              hover:border-white/10
+              hover:bg-white/[0.07]
+              hover:text-white
+              disabled:cursor-not-allowed
+              disabled:opacity-40
+            "
+                >
+                  <div
+                    className="
+                flex h-8 w-8
+                shrink-0
+                items-center justify-center
+                rounded-lg
+                border border-white/10
+                bg-white/6
+                text-white/70
+              "
+                  >
+                    <Trash2 size={17} />
+                  </div>
+                  <span>Remove photo</span>
+                </button>
+              )}
 
             </div>
 
