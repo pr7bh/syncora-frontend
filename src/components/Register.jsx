@@ -23,7 +23,7 @@ export default function Register({ onSwitchToLogin }) {
     setLoading(true);
 
     try {
-      const data = await registerUser(
+      await registerUser(
         username,
         email,
         password

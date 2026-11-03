@@ -152,6 +152,8 @@ function Home() {
     setError("");
     setChatHistory([]);
     setQuestion("");
+    setSelectedMeeting(null);
+    setSummaryComplete(false);
   }
 
   async function selectMeeting(meeting) {

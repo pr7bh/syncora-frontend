@@ -1,7 +1,6 @@
 import SpecularButton from "./SpecularButton";
 
 function MeetingInput({
-  file,
   setFile,
   youtubeUrl,
   setYoutubeUrl,

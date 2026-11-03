@@ -146,7 +146,7 @@ function Summary({ summary, animate = true, onComplete }) {
           </ReactMarkdown>
 
           {/* Cursor only during animation */}
-          {animate && displayedSummary.length < summary.length && (
+          {animate && summary && displayedSummary.length < summary.length && (
             <span
               className="
                 ml-1

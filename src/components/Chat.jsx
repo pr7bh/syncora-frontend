@@ -209,9 +209,7 @@ function Chat({
                       "
                     >
                       <p className="whitespace-pre-wrap leading-6">
-                        {message.role === "assistant"
-                          ? (displayedMessages[index] ?? message.content)
-                          : message.content}
+                        {message.content}
                       </p>
                     </div>
                   ) : (
@@ -434,7 +432,7 @@ function Chat({
                               ),
                             }}
                           >
-                            {message.content}
+                            {displayedMessages[index] ?? message.content}
                           </ReactMarkdown>
                         </div>
 

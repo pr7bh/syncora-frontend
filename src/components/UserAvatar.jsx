@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { uploadProfilePicture } from "../services/api";
-import { Camera, LogOut, User, X } from "lucide-react";
+import { uploadProfilePicture, API_URL } from "../services/api";
+import { Camera, LogOut, User } from "lucide-react";
 
 import { useAuth } from "../context/AuthContext";
 
@@ -45,10 +45,8 @@ export default function UserAvatar() {
     }
   }
 
-  function handleRemovePhoto() {
-    setProfileImage(null);
-    localStorage.removeItem("profile_image");
-  }
+  // Persistent photo removal requires DELETE /api/auth/profile-picture on the backend.
+  // removeProfilePicture() in api.js is ready for integration once that endpoint exists.
 
   function handleLogout() {
     setIsOpen(false);
@@ -253,40 +251,6 @@ export default function UserAvatar() {
                 </span>
               </button>
 
-              {/* Remove Profile Picture */}
-              {profileImage && !uploading && (
-                <button
-                  type="button"
-                  onClick={handleRemovePhoto}
-                  className="
-              flex w-full items-center gap-3
-              rounded-xl
-              border border-transparent
-              px-3 py-2.5
-              text-sm text-white/70
-              transition-all duration-200
-              hover:border-white/10
-              hover:bg-white/[0.07]
-              hover:text-white
-            "
-                >
-                  <div
-                    className="
-                flex h-8 w-8
-                shrink-0
-                items-center justify-center
-                rounded-lg
-                border border-white/10
-                bg-white/6
-                text-white/70
-              "
-                  >
-                    <User size={17} />
-                  </div>
-
-                  <span>Remove profile picture</span>
-                </button>
-              )}
             </div>
 
             {/* Logout */}

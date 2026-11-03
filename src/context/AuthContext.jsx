@@ -45,7 +45,7 @@ export function AuthProvider({ children }) {
 
         setUser(currentUser);
 
-      } catch (error) {
+      } catch {
 
         removeToken();
 

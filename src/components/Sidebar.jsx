@@ -1,7 +1,5 @@
-import { useTheme } from "../context/ThemeContext";
 import lightLogo from "../assets/logo-light-mode.png";
 import darkLogo from "../assets/logo-dark-mode.png";
-import { deleteMeeting } from "../services/api";
 import SpecularButton from "./SpecularButton";
 import { useState } from "react";
 import {
@@ -9,9 +7,6 @@ import {
   PanelLeftClose,
   Plus,
   FileText,
-  Sun,
-  Moon,
-  X,
   MoreVertical,
   Trash2,
 } from "lucide-react";
@@ -26,7 +21,6 @@ function Sidebar({
   collapsed,
   setCollapsed,
 }) {
-  const { darkMode, toggleTheme } = useTheme();
   const [openMenuId, setOpenMenuId] = useState(null);
 
   return (
