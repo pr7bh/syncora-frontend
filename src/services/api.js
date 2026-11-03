@@ -1,6 +1,6 @@
 import { getToken } from "../utils/auth";
 
-const API_URL =
+export const API_URL =
   import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 // const API_URL = "http://localhost:8000";
@@ -235,6 +235,25 @@ export async function uploadProfilePicture(file) {
   if (!response.ok) {
     throw new Error(
       data.detail || "Failed to upload profile picture"
+    );
+  }
+
+  return data;
+}
+
+export async function removeProfilePicture() {
+  const response = await authFetch(
+    `${API_URL}/api/auth/profile-picture`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.detail || "Failed to remove profile picture"
     );
   }
 
