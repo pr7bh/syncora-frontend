@@ -1,7 +1,7 @@
 import lightLogo from "../assets/logo-light-mode.png";
 import darkLogo from "../assets/logo-dark-mode.png";
 import SpecularButton from "./SpecularButton";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   PanelLeft,
   PanelLeftClose,
@@ -22,6 +22,15 @@ function Sidebar({
   setCollapsed,
 }) {
   const [openMenuId, setOpenMenuId] = useState(null);
+  const closeTimerRef = useRef(null);
+
+  const startCloseTimer = () => {
+    closeTimerRef.current = setTimeout(() => setOpenMenuId(null), 1500);
+  };
+
+  const cancelCloseTimer = () => {
+    clearTimeout(closeTimerRef.current);
+  };
 
   return (
     <aside
@@ -270,7 +279,11 @@ function Sidebar({
 
                   {/* Three dots + menu */}
                   {!collapsed && (
-                    <div className="relative shrink-0">
+                    <div
+                      className="relative shrink-0"
+                      onMouseLeave={startCloseTimer}
+                      onMouseEnter={cancelCloseTimer}
+                    >
                       <button
                         type="button"
                         onClick={(event) => {
