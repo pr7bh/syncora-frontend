@@ -47,6 +47,14 @@ function Sidebar({
         lg:transition-all
       `}
     >
+      {/* Invisible backdrop — closes open menu when user clicks outside */}
+      {openMenuId && (
+        <div
+          className="fixed inset-0 z-40"
+          onClick={() => setOpenMenuId(null)}
+        />
+      )}
+
       <div className="flex h-full flex-col p-3">
         {/* Header */}
         <div
