@@ -132,13 +132,13 @@ function Chat({
         className="
     overflow-hidden
     rounded-2xl
-    border border-gray-200 dark:border-white/10
-    bg-white/80 dark:bg-white/6
-    shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
-    backdrop-blur-xl
+    border border-white/40 dark:border-white/10
+    bg-white/85 dark:bg-white/6
+    shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+    backdrop-blur-2xl dark:backdrop-blur-xl
     transition-all duration-300
-    hover:border-gray-300 dark:hover:border-white/15
-    hover:bg-white/90 dark:hover:bg-white/8
+    hover:border-white/60 dark:hover:border-white/15
+    hover:bg-white/92 dark:hover:bg-white/8
   "
       >
         {/* Messages */}
@@ -550,8 +550,8 @@ function Chat({
         <div
           className="
     border-t
-    border-gray-200 dark:border-white/10
-    bg-gray-50/80 dark:bg-white/3
+    border-white/30 dark:border-white/10
+    bg-white/50 dark:bg-white/3
     p-4
     backdrop-blur-xl
   "
@@ -563,8 +563,8 @@ function Chat({
       gap-2
       rounded-2xl
       border
-      border-gray-300 dark:border-white/10
-      bg-white dark:bg-white/6
+      border-white/50 dark:border-white/10
+      bg-white/70 dark:bg-white/6
       p-2
       shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)]
       backdrop-blur-xl

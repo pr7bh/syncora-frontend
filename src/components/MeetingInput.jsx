@@ -11,11 +11,11 @@ function MeetingInput({
     <div
       className="
         rounded-2xl
-        border border-gray-200
-        bg-white/80
+        border border-white/40
+        bg-white/85
         p-5
-        shadow-2xl
-        backdrop-blur-xl
+        shadow-xl
+        backdrop-blur-2xl
         transition-all duration-300
 
         dark:border-white/15
@@ -43,8 +43,8 @@ function MeetingInput({
           block
           w-full
           rounded-lg
-          border border-gray-300
-          bg-white
+          border border-white/40
+          bg-white/60
           p-2
           text-sm
           text-gray-700
@@ -111,8 +111,8 @@ function MeetingInput({
         className="
           w-full
           rounded-lg
-          border border-gray-300
-          bg-white
+          border border-white/40
+          bg-white/60
           px-4
           py-3
           text-sm

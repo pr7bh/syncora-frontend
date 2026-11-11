@@ -46,7 +46,7 @@ export default function Register({ onSwitchToLogin }) {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gray-50 dark:bg-black font-[Manrope] text-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-transparent dark:bg-black font-[Manrope] text-gray-900">
 
       {/* ================= BACKGROUND ================= */}
 
@@ -67,7 +67,7 @@ export default function Register({ onSwitchToLogin }) {
 
       {/* ================= OVERLAY ================= */}
 
-      <div className="absolute inset-0 z-10 bg-white/60 dark:bg-black/20" />
+      <div className="absolute inset-0 z-10 bg-white/10 dark:bg-black/20" />
 
       {/* ================= REGISTER CONTENT ================= */}
 
@@ -95,13 +95,13 @@ export default function Register({ onSwitchToLogin }) {
             className="
               rounded-2xl
               border
-              border-gray-200
+              border-white/30
               dark:border-white/15
-              bg-white/70
+              bg-white/85
               dark:bg-black/20
               p-6
               shadow-2xl
-              backdrop-blur-md
+              backdrop-blur-2xl
             "
           >
 
@@ -144,20 +144,21 @@ export default function Register({ onSwitchToLogin }) {
                     w-full
                     rounded-lg
                     border
-                    border-gray-300
+                    border-white/40
                     dark:border-white/15
-                    bg-white
+                    bg-white/60
                     dark:bg-white/10
                     px-4
                     py-3
                     text-gray-900
                     dark:text-white
-                    placeholder:text-gray-400
+                    placeholder:text-gray-500
                     dark:placeholder:text-white/40
                     outline-none
                     transition-all
                     duration-300
                     focus:border-purple-400
+                    focus:bg-white/80
                     focus:ring-2
                     focus:ring-purple-500/30
                   "
@@ -185,20 +186,21 @@ export default function Register({ onSwitchToLogin }) {
                     w-full
                     rounded-lg
                     border
-                    border-gray-300
+                    border-white/40
                     dark:border-white/15
-                    bg-white
+                    bg-white/60
                     dark:bg-white/10
                     px-4
                     py-3
                     text-gray-900
                     dark:text-white
-                    placeholder:text-gray-400
+                    placeholder:text-gray-500
                     dark:placeholder:text-white/40
                     outline-none
                     transition-all
                     duration-300
                     focus:border-purple-400
+                    focus:bg-white/80
                     focus:ring-2
                     focus:ring-purple-500/30
                   "
@@ -227,20 +229,21 @@ export default function Register({ onSwitchToLogin }) {
                     w-full
                     rounded-lg
                     border
-                    border-gray-300
+                    border-white/40
                     dark:border-white/15
-                    bg-white
+                    bg-white/60
                     dark:bg-white/10
                     px-4
                     py-3
                     text-gray-900
                     dark:text-white
-                    placeholder:text-gray-400
+                    placeholder:text-gray-500
                     dark:placeholder:text-white/40
                     outline-none
                     transition-all
                     duration-300
                     focus:border-purple-400
+                    focus:bg-white/80
                     focus:ring-2
                     focus:ring-purple-500/30
                   "

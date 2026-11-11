@@ -60,15 +60,15 @@ function Summary({ summary, animate = true, onComplete }) {
       <div
         className="
           rounded-2xl
-          border border-gray-200 dark:border-white/10
-          bg-white/80 dark:bg-white/6
+          border border-white/40 dark:border-white/10
+          bg-white/85 dark:bg-white/6
           p-6
-          shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
-          backdrop-blur-xl
+          shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+          backdrop-blur-2xl dark:backdrop-blur-xl
           transition-all
           duration-300
-          hover:border-gray-300 dark:hover:border-white/15
-          hover:bg-white/90 dark:hover:bg-white/8
+          hover:border-white/60 dark:hover:border-white/15
+          hover:bg-white/92 dark:hover:bg-white/8
         "
       >
         <div

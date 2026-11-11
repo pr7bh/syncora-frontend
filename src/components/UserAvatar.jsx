@@ -83,15 +83,15 @@ export default function UserAvatar() {
     overflow-hidden
     rounded-full
 
-    border border-gray-200 dark:border-white/20
-    bg-gray-100 dark:bg-white/6
+    border border-white/40 dark:border-white/20
+    bg-white/85 dark:bg-white/6
     backdrop-blur-xl
     shadow-[0_4px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)]
 
     transition-all duration-200
     hover:scale-105
-    hover:border-gray-300 dark:hover:border-white/30
-    hover:bg-gray-200 dark:hover:bg-white/12
+    hover:border-white/60 dark:hover:border-white/30
+    hover:bg-white/95 dark:hover:bg-white/12
     hover:shadow-[0_6px_25px_rgba(180,151,207,0.25)]
 
     focus:outline-none
@@ -116,9 +116,9 @@ export default function UserAvatar() {
             className="
         flex h-full w-full
         items-center justify-center
-        bg-gray-200 dark:bg-white/6
+        bg-white/60 dark:bg-white/6
         text-sm font-semibold
-        text-gray-800 dark:text-white
+        text-gray-700 dark:text-white
         backdrop-blur-xl
       "
           >

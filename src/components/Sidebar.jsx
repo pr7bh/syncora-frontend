@@ -40,8 +40,8 @@ function Sidebar({
     <aside
       className={`
         fixed left-0 top-0 z-50 h-screen
-        border-r border-gray-200
-        bg-white/80
+        border-r border-white/30
+        bg-white/88
         text-gray-900
         shadow-2xl
         backdrop-blur-2xl

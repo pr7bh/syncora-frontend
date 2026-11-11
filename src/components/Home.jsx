@@ -186,7 +186,7 @@ function Home() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gray-50 dark:bg-black font-[Manrope] text-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-transparent dark:bg-black font-[Manrope] text-gray-900">
       {/* Global Plasma Background */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <Plasma
@@ -212,14 +212,14 @@ function Home() {
           fixed left-4 top-4 z-50
           flex h-10 w-10 items-center justify-center
           rounded-lg
-          border border-gray-200 dark:border-white/10
-          bg-white/80 dark:bg-black/20
+          border border-white/30 dark:border-white/10
+          bg-white/85 dark:bg-black/20
           text-gray-700 dark:text-white
           shadow-sm
           backdrop-blur-xl
           transition-all duration-200
           hover:scale-105
-          hover:bg-gray-100 dark:hover:bg-white/10
+          hover:bg-white/95 dark:hover:bg-white/10
           lg:hidden
         "
         >
@@ -511,15 +511,15 @@ function Home() {
                   transition={{ duration: 0.35 }}
                   className="
         rounded-2xl
-        border border-gray-200 dark:border-white/10
-        bg-white/80 dark:bg-white/6
+        border border-white/40 dark:border-white/10
+        bg-white/85 dark:bg-white/6
         p-6
-        shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
-        backdrop-blur-xl
+        shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+        backdrop-blur-2xl dark:backdrop-blur-xl
         transition-all
         duration-300
-        hover:border-gray-300 dark:hover:border-white/15
-        hover:bg-white/90 dark:hover:bg-white/8
+        hover:border-white/60 dark:hover:border-white/15
+        hover:bg-white/92 dark:hover:bg-white/8
       "
                 >
                   <div className="flex items-start gap-4">
@@ -534,8 +534,8 @@ function Home() {
             justify-center
             rounded-xl
             border
-            border-gray-200 dark:border-white/10
-            bg-gray-100 dark:bg-white/8
+            border-white/40 dark:border-white/10
+            bg-white/60 dark:bg-white/8
             shadow-inner
             backdrop-blur-md
           "
