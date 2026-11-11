@@ -171,9 +171,9 @@ function Sidebar({
 </div>
 
         {/* Recents */}
-        <div className="min-w-0">
+        <div className="flex min-h-0 flex-1 flex-col">
   {!collapsed && (
-    <h2 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+    <h2 className="mb-2 shrink-0 px-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
       Recents
     </h2>
   )}
@@ -213,7 +213,7 @@ function Sidebar({
       </p>
     )
   ) : (
-            <div className="chat-scrollbar space-y-1">
+            <div className="chat-scrollbar flex-1 space-y-1 overflow-y-auto pr-0.5">
               {recents.map((meeting) => (
                 <div
                   key={meeting.id}
