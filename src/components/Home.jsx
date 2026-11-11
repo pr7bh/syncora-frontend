@@ -54,7 +54,7 @@ function Home() {
       setRecents((prev) => prev.filter((meeting) => meeting.id !== meetingId));
 
       if (selectedMeeting?.id === meetingId) {
-        setSelectedMeeting(null);
+        newMeeting();
       }
     } catch (error) {
       console.error(error);
