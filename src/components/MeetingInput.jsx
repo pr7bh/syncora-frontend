@@ -1,4 +1,5 @@
 import SpecularButton from "./SpecularButton";
+import { useTheme } from "../context/ThemeContext";
 
 function MeetingInput({
   setFile,
@@ -7,15 +8,16 @@ function MeetingInput({
   loading,
   analyzeMeeting,
 }) {
+  const { darkMode } = useTheme();
   return (
     <div
       className="
         rounded-2xl
-        border border-white/40
-        bg-white/85
+        border border-white/30
+        bg-white/80
         p-5
-        shadow-xl
-        backdrop-blur-2xl
+        shadow-2xl
+        backdrop-blur-xl
         transition-all duration-300
 
         dark:border-white/15
@@ -145,7 +147,7 @@ function MeetingInput({
           tint="#ffffff"
           tintOpacity={0}
           blur={0}
-          textColor="#f5f5f5"
+          textColor={darkMode ? "#f5f5f5" : "#111827"}
           lineColor="#ffffff"
           baseColor="#000000"
           intensity={1}

@@ -41,7 +41,7 @@ function Sidebar({
       className={`
         fixed left-0 top-0 z-50 h-screen
         border-r border-white/30
-        bg-white/88
+        bg-white/80
         text-gray-900
         shadow-2xl
         backdrop-blur-2xl
@@ -145,7 +145,7 @@ function Sidebar({
     tint="#ffffff"
     tintOpacity={0.08}
     blur={8}
-    textColor="#f5f5f5"
+    textColor={darkMode ? "#f5f5f5" : "#111827"}
     lineColor="#ffffff"
     baseColor="#000000"
     intensity={0.8}

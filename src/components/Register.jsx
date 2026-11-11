@@ -5,8 +5,10 @@ import SpecularButton from "./SpecularButton";
 import logoDark from "../assets/logo-dark-mode.png";
 import logoLight from "../assets/logo-light-mode.png";
 import Plasma from "./Plasma";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Register({ onSwitchToLogin }) {
+  const { darkMode } = useTheme();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -97,11 +99,11 @@ export default function Register({ onSwitchToLogin }) {
               border
               border-white/30
               dark:border-white/15
-              bg-white/85
+              bg-white/80
               dark:bg-black/20
               p-6
               shadow-2xl
-              backdrop-blur-2xl
+              backdrop-blur-xl
             "
           >
 
@@ -299,7 +301,7 @@ export default function Register({ onSwitchToLogin }) {
                 tint="#ffffff"
                 tintOpacity={0.08}
                 blur={8}
-                textColor="#f5f5f5"
+                textColor={darkMode ? "#f5f5f5" : "#111827"}
                 lineColor="#ffffff"
                 baseColor="#ffffff"
                 intensity={0.8}

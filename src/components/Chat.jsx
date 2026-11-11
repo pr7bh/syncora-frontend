@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import ReactMarkdown from "react-markdown";
 import SpecularButton from "./SpecularButton";
+import { useTheme } from "../context/ThemeContext";
 
 import { ArrowUp, Bot, Copy, Check } from "lucide-react";
 
@@ -16,6 +17,7 @@ function Chat({
 
   chatLoading,
 }) {
+  const { darkMode } = useTheme();
   const messagesEndRef = useRef(null);
 
   const [displayedMessages, setDisplayedMessages] = useState({});
@@ -132,13 +134,13 @@ function Chat({
         className="
     overflow-hidden
     rounded-2xl
-    border border-white/40 dark:border-white/10
-    bg-white/85 dark:bg-white/6
-    shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
-    backdrop-blur-2xl dark:backdrop-blur-xl
+    border border-white/30 dark:border-white/10
+    bg-white/80 dark:bg-white/6
+    shadow-2xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+    backdrop-blur-xl
     transition-all duration-300
-    hover:border-white/60 dark:hover:border-white/15
-    hover:bg-white/92 dark:hover:bg-white/8
+    hover:border-white/50 dark:hover:border-white/15
+    hover:bg-white/88 dark:hover:bg-white/8
   "
       >
         {/* Messages */}
@@ -609,7 +611,7 @@ function Chat({
               tint="#ffffff"
               tintOpacity={0.08}
               blur={8}
-              textColor="#ffffff"
+              textColor={darkMode ? "#ffffff" : "#111827"}
               lineColor="#ffffff"
               baseColor="#000000"
               intensity={0.85}
