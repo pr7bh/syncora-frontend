@@ -5,7 +5,8 @@ import { saveToken } from "../utils/auth";
 import { useAuth } from "../context/AuthContext";
 import { GoogleLogin } from "@react-oauth/google";
 
-import logo from "../assets/logo-dark-mode.png"
+import logoDark from "../assets/logo-dark-mode.png";
+import logoLight from "../assets/logo-light-mode.png";
 
 import SpecularButton from "./SpecularButton";
 import Plasma from "./Plasma";
@@ -54,7 +55,7 @@ export default function Login({ onSwitchToRegister }) {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black font-[Manrope] text-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-gray-50 dark:bg-black font-[Manrope] text-gray-900">
       {/* ================= BACKGROUND ================= */}
       <div className="pointer-events-none fixed inset-0 z-0">
               <Plasma
@@ -71,21 +72,20 @@ export default function Login({ onSwitchToRegister }) {
               />
             </div>
 
-      {/* ================= DARK OVERLAY ================= */}
-      <div className="absolute inset-0 z-10 bg-black/20" />
+      {/* ================= OVERLAY ================= */}
+      <div className="absolute inset-0 z-10 bg-white/60 dark:bg-black/20" />
 
       {/* ================= LOGIN CONTENT ================= */}
       <div className="relative z-20 flex min-h-screen items-center justify-center p-4">
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="flex flex-col items-center text-center">
-      <img
-        src={logo}
-        alt="Syncora Logo"
-        className="h-20 w-auto object-contain"
-      />
+      {/* Light mode logo */}
+      <img src={logoLight} alt="Syncora Logo" className="h-20 w-auto object-contain dark:hidden" />
+      {/* Dark mode logo */}
+      <img src={logoDark} alt="Syncora Logo" className="hidden h-20 w-auto object-contain dark:block" />
 
-      <h1 className="mt-3 text-5xl font-extrabold tracking-tight text-slate-50 mb-8">
+      <h1 className="mt-3 text-5xl font-extrabold tracking-tight text-gray-900 dark:text-slate-50 mb-8">
         Syncora
       </h1>
     </div>
@@ -96,8 +96,10 @@ export default function Login({ onSwitchToRegister }) {
               className="
               rounded-2xl
               border
-              border-white/15
-              bg-transparent
+              border-gray-200
+              dark:border-white/15
+              bg-white/70
+              dark:bg-transparent
               p-2
               shadow-2xl
               backdrop-blur-sm
@@ -108,7 +110,7 @@ export default function Login({ onSwitchToRegister }) {
 
   {/* Email */}
   <div>
-    <label className="mb-2 block text-sm font-medium text-white/80">
+    <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-white/80">
       Email
     </label>
 
@@ -122,12 +124,16 @@ export default function Login({ onSwitchToRegister }) {
         w-full
         rounded-lg
         border
-        border-white/15
-        bg-white/10
+        border-gray-300
+        dark:border-white/15
+        bg-white
+        dark:bg-white/10
         px-4
         py-3
-        text-white
-        placeholder:text-white/40
+        text-gray-900
+        dark:text-white
+        placeholder:text-gray-400
+        dark:placeholder:text-white/40
         outline-none
         transition-all
         duration-300
@@ -140,7 +146,7 @@ export default function Login({ onSwitchToRegister }) {
 
   {/* Password */}
   <div>
-    <label className="mb-2 block text-sm font-medium text-white/80">
+    <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-white/80">
       Password
     </label>
 
@@ -154,12 +160,16 @@ export default function Login({ onSwitchToRegister }) {
         w-full
         rounded-lg
         border
-        border-white/15
-        bg-white/10
+        border-gray-300
+        dark:border-white/15
+        bg-white
+        dark:bg-white/10
         px-4
         py-3
-        text-white
-        placeholder:text-white/40
+        text-gray-900
+        dark:text-white
+        placeholder:text-gray-400
+        dark:placeholder:text-white/40
         outline-none
         transition-all
         duration-300
@@ -236,7 +246,7 @@ export default function Login({ onSwitchToRegister }) {
     </div>
 
     <div className="relative flex justify-center">
-      <span className="px-3 text-sm text-white/40">
+      <span className="px-3 text-sm text-gray-400 dark:text-white/40">
         OR
       </span>
     </div>
@@ -322,7 +332,7 @@ export default function Login({ onSwitchToRegister }) {
 
               {/* Register */}
               <div className="mt-6 text-center text-sm">
-                <span className="text-white/60">Don't have an account? </span>
+                <span className="text-gray-500 dark:text-white/60">Don't have an account? </span>
 
                 <button
                   type="button"

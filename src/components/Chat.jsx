@@ -119,9 +119,9 @@ function Chat({
       {/* Header */}
 
       <div className="mb-5">
-        <h2 className="text-xl font-semibold text-white">Ask Questions</h2>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Ask Questions</h2>
 
-        <p className="mt-1 text-sm text-white/45">
+        <p className="mt-1 text-sm text-gray-500 dark:text-white/45">
           Ask anything about this meeting or related topics.
         </p>
       </div>
@@ -132,13 +132,13 @@ function Chat({
         className="
     overflow-hidden
     rounded-2xl
-    border border-white/10
-    bg-white/6
-    shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+    border border-gray-200 dark:border-white/10
+    bg-white/80 dark:bg-white/6
+    shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
     backdrop-blur-xl
     transition-all duration-300
-    hover:border-white/15
-    hover:bg-white/8
+    hover:border-gray-300 dark:hover:border-white/15
+    hover:bg-white/90 dark:hover:bg-white/8
   "
       >
         {/* Messages */}
@@ -150,9 +150,9 @@ function Chat({
             mb-4 flex h-12 w-12
             items-center justify-center
             rounded-full
-            border border-white/10
-            bg-white/8
-            text-white/80
+            border border-gray-200 dark:border-white/10
+            bg-gray-100 dark:bg-white/8
+            text-gray-500 dark:text-white/80
             shadow-inner
             backdrop-blur-md
           "
@@ -160,9 +160,9 @@ function Chat({
                 <Bot size={22} />
               </div>
 
-              <h3 className="font-medium text-white">Ask anything</h3>
+              <h3 className="font-medium text-gray-900 dark:text-white">Ask anything</h3>
 
-              <p className="mt-1 max-w-sm text-sm text-white/40">
+              <p className="mt-1 max-w-sm text-sm text-gray-500 dark:text-white/40">
                 Ask questions about the meeting, or ask me to explain something
                 related to the discussion.
               </p>
@@ -530,7 +530,7 @@ function Chat({
                 </div>
 
                 <div className="flex items-center gap-2 pt-2">
-                  <div className="flex items-center gap-1.5 rounded-2xl border border-white/10 bg-white/6 px-4 py-3 backdrop-blur-md">
+                  <div className="flex items-center gap-1.5 rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/6 px-4 py-3 backdrop-blur-md">
                     <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-purple-300/60" />
 
                     <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-purple-300/60 [animation-delay:150ms]" />
@@ -550,8 +550,8 @@ function Chat({
         <div
           className="
     border-t
-    border-white/10
-    bg-white/3
+    border-gray-200 dark:border-white/10
+    bg-gray-50/80 dark:bg-white/3
     p-4
     backdrop-blur-xl
   "
@@ -563,16 +563,16 @@ function Chat({
       gap-2
       rounded-2xl
       border
-      border-white/10
-      bg-white/6
+      border-gray-300 dark:border-white/10
+      bg-white dark:bg-white/6
       p-2
-      shadow-[0_8px_32px_rgba(0,0,0,0.2)]
+      shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)]
       backdrop-blur-xl
       transition-all
       duration-300
-      focus-within:border-white/20
-      focus-within:bg-white/8
-      focus-within:shadow-[0_0_25px_rgba(168,85,247,0.08)]
+      focus-within:border-purple-300 dark:focus-within:border-white/20
+      focus-within:bg-white dark:focus-within:bg-white/8
+      focus-within:shadow-[0_0_25px_rgba(168,85,247,0.1)] dark:focus-within:shadow-[0_0_25px_rgba(168,85,247,0.08)]
     "
           >
             <textarea
@@ -591,9 +591,9 @@ function Chat({
         px-3
         py-2.5
         text-sm
-        text-white/90
+        text-gray-900 dark:text-white/90
         outline-none
-        placeholder:text-white/35
+        placeholder:text-gray-400 dark:placeholder:text-white/35
         disabled:cursor-not-allowed
         disabled:opacity-50
       "
@@ -634,7 +634,7 @@ function Chat({
             </SpecularButton>
           </div>
 
-          <p className="mt-2 text-center text-[11px] text-white/30">
+          <p className="mt-2 text-center text-[11px] text-gray-400 dark:text-white/30">
             Enter to send · Shift + Enter for a new line
           </p>
         </div>

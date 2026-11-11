@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import { registerUser } from "../services/api";
 import SpecularButton from "./SpecularButton";
-import logo from "../assets/logo-dark-mode.png"
+import logoDark from "../assets/logo-dark-mode.png";
+import logoLight from "../assets/logo-light-mode.png";
 import Plasma from "./Plasma";
 
 export default function Register({ onSwitchToLogin }) {
@@ -45,7 +46,7 @@ export default function Register({ onSwitchToLogin }) {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black font-[Manrope] text-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-gray-50 dark:bg-black font-[Manrope] text-gray-900">
 
       {/* ================= BACKGROUND ================= */}
 
@@ -64,9 +65,9 @@ export default function Register({ onSwitchToLogin }) {
               />
             </div>
 
-      {/* ================= DARK OVERLAY ================= */}
+      {/* ================= OVERLAY ================= */}
 
-      <div className="absolute inset-0 z-10 bg-black/20" />
+      <div className="absolute inset-0 z-10 bg-white/60 dark:bg-black/20" />
 
       {/* ================= REGISTER CONTENT ================= */}
 
@@ -78,13 +79,12 @@ export default function Register({ onSwitchToLogin }) {
 
           
                     <div className="flex flex-col items-center text-center">
-                <img
-                  src={logo}
-                  alt="Syncora Logo"
-                  className="h-20 w-auto object-contain"
-                />
-          
-                <h1 className="mt-3 text-5xl font-extrabold tracking-tight text-slate-50 mb-8">
+                {/* Light mode logo */}
+                <img src={logoLight} alt="Syncora Logo" className="h-20 w-auto object-contain dark:hidden" />
+                {/* Dark mode logo */}
+                <img src={logoDark} alt="Syncora Logo" className="hidden h-20 w-auto object-contain dark:block" />
+
+                <h1 className="mt-3 text-5xl font-extrabold tracking-tight text-gray-900 dark:text-slate-50 mb-8">
                   Syncora
                 </h1>
               </div>
@@ -95,8 +95,10 @@ export default function Register({ onSwitchToLogin }) {
             className="
               rounded-2xl
               border
-              border-white/15
-              bg-black/20
+              border-gray-200
+              dark:border-white/15
+              bg-white/70
+              dark:bg-black/20
               p-6
               shadow-2xl
               backdrop-blur-md
@@ -107,11 +109,11 @@ export default function Register({ onSwitchToLogin }) {
 
             <div className="mb-6">
 
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
                 Create your account
               </h2>
 
-              <p className="mt-2 text-sm text-white/50">
+              <p className="mt-2 text-sm text-gray-500 dark:text-white/50">
                 Get started with Syncora
               </p>
 
@@ -126,7 +128,7 @@ export default function Register({ onSwitchToLogin }) {
 
               <div>
 
-                <label className="mb-2 block text-sm font-medium text-white/80">
+                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-white/80">
                   Username
                 </label>
 
@@ -142,12 +144,16 @@ export default function Register({ onSwitchToLogin }) {
                     w-full
                     rounded-lg
                     border
-                    border-white/15
-                    bg-white/10
+                    border-gray-300
+                    dark:border-white/15
+                    bg-white
+                    dark:bg-white/10
                     px-4
                     py-3
-                    text-white
-                    placeholder:text-white/40
+                    text-gray-900
+                    dark:text-white
+                    placeholder:text-gray-400
+                    dark:placeholder:text-white/40
                     outline-none
                     transition-all
                     duration-300
@@ -163,7 +169,7 @@ export default function Register({ onSwitchToLogin }) {
 
               <div>
 
-                <label className="mb-2 block text-sm font-medium text-white/80">
+                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-white/80">
                   Email
                 </label>
 
@@ -179,12 +185,16 @@ export default function Register({ onSwitchToLogin }) {
                     w-full
                     rounded-lg
                     border
-                    border-white/15
-                    bg-white/10
+                    border-gray-300
+                    dark:border-white/15
+                    bg-white
+                    dark:bg-white/10
                     px-4
                     py-3
-                    text-white
-                    placeholder:text-white/40
+                    text-gray-900
+                    dark:text-white
+                    placeholder:text-gray-400
+                    dark:placeholder:text-white/40
                     outline-none
                     transition-all
                     duration-300
@@ -200,7 +210,7 @@ export default function Register({ onSwitchToLogin }) {
 
               <div>
 
-                <label className="mb-2 block text-sm font-medium text-white/80">
+                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-white/80">
                   Password
                 </label>
 
@@ -217,12 +227,16 @@ export default function Register({ onSwitchToLogin }) {
                     w-full
                     rounded-lg
                     border
-                    border-white/15
-                    bg-white/10
+                    border-gray-300
+                    dark:border-white/15
+                    bg-white
+                    dark:bg-white/10
                     px-4
                     py-3
-                    text-white
-                    placeholder:text-white/40
+                    text-gray-900
+                    dark:text-white
+                    placeholder:text-gray-400
+                    dark:placeholder:text-white/40
                     outline-none
                     transition-all
                     duration-300
@@ -306,7 +320,7 @@ export default function Register({ onSwitchToLogin }) {
 
             <div className="mt-6 text-center text-sm">
 
-              <span className="text-white/60">
+              <span className="text-gray-500 dark:text-white/60">
                 Already have an account?{" "}
               </span>
 

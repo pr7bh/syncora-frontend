@@ -11,8 +11,8 @@ function MeetingInput({
     <div
       className="
         rounded-2xl
-        border border-white/15
-        bg-white/10
+        border border-gray-200
+        bg-white/80
         p-5
         shadow-2xl
         backdrop-blur-xl
@@ -43,8 +43,8 @@ function MeetingInput({
           block
           w-full
           rounded-lg
-          border border-white/15
-          bg-white/10
+          border border-gray-300
+          bg-white
           p-2
           text-sm
           text-gray-700
@@ -54,12 +54,12 @@ function MeetingInput({
           file:mr-4
           file:rounded-md
           file:border-0
-          file:bg-white/20
+          file:bg-gray-100
           file:px-3
           file:py-1.5
           file:text-sm
           file:font-medium
-          file:text-gray-800
+          file:text-gray-700
 
           hover:border-purple-300/50
 
@@ -111,8 +111,8 @@ function MeetingInput({
         className="
           w-full
           rounded-lg
-          border border-white/15
-          bg-white/10
+          border border-gray-300
+          bg-white
           px-4
           py-3
           text-sm

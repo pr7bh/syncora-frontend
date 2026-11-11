@@ -186,7 +186,7 @@ function Home() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black font-[Manrope] text-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-gray-50 dark:bg-black font-[Manrope] text-gray-900">
       {/* Global Plasma Background */}
       <div className="pointer-events-none fixed inset-0 z-0">
         <Plasma
@@ -212,14 +212,14 @@ function Home() {
           fixed left-4 top-4 z-50
           flex h-10 w-10 items-center justify-center
           rounded-lg
-          border border-white/10
-          bg-black/20
-          text-white
+          border border-gray-200 dark:border-white/10
+          bg-white/80 dark:bg-black/20
+          text-gray-700 dark:text-white
           shadow-sm
           backdrop-blur-xl
           transition-all duration-200
           hover:scale-105
-          hover:bg-white/10
+          hover:bg-gray-100 dark:hover:bg-white/10
           lg:hidden
         "
         >
@@ -256,7 +256,8 @@ function Home() {
           h-screen
           overflow-y-auto
           bg-transparent
-          text-white
+          text-gray-900
+          dark:text-white
           transition-all
           duration-300
           ease-in-out
@@ -306,7 +307,7 @@ function Home() {
                     />
                   </motion.div>
 
-                  <h3 className="text-xl font-bold tracking-tight sm:text-4xl">
+                  <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                     Turn meetings/videos into
                     <span className="block text-gray-500 dark:text-gray-400">
                       actionable insights.
@@ -510,15 +511,15 @@ function Home() {
                   transition={{ duration: 0.35 }}
                   className="
         rounded-2xl
-        border border-white/10
-        bg-white/6
+        border border-gray-200 dark:border-white/10
+        bg-white/80 dark:bg-white/6
         p-6
-        shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+        shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
         backdrop-blur-xl
         transition-all
         duration-300
-        hover:border-white/15
-        hover:bg-white/8
+        hover:border-gray-300 dark:hover:border-white/15
+        hover:bg-white/90 dark:hover:bg-white/8
       "
                 >
                   <div className="flex items-start gap-4">
@@ -533,8 +534,8 @@ function Home() {
             justify-center
             rounded-xl
             border
-            border-white/10
-            bg-white/8
+            border-gray-200 dark:border-white/10
+            bg-gray-100 dark:bg-white/8
             shadow-inner
             backdrop-blur-md
           "
@@ -546,7 +547,7 @@ function Home() {
                           className="h-6 w-6 object-contain"
                         />
                       ) : (
-                        <FileAudio size={19} className="text-white/80" />
+                        <FileAudio size={19} className="text-gray-500 dark:text-white/80" />
                       )}
                     </div>
 
@@ -556,7 +557,7 @@ function Home() {
                         className="
               truncate
               font-semibold
-              text-white
+              text-gray-900 dark:text-white
             "
                       >
                         {result.title || "Video"}
@@ -569,7 +570,7 @@ function Home() {
               items-center
               gap-2
               text-xs
-              text-white/45
+              text-gray-500 dark:text-white/45
             "
                       >
                         <Clock3 size={13} />

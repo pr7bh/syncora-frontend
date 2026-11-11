@@ -9,7 +9,10 @@ import {
   FileText,
   MoreVertical,
   Trash2,
+  Sun,
+  Moon,
 } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 function Sidebar({
   recents,
@@ -21,6 +24,7 @@ function Sidebar({
   collapsed,
   setCollapsed,
 }) {
+  const { darkMode, toggleTheme } = useTheme();
   const [openMenuId, setOpenMenuId] = useState(null);
   const closeTimerRef = useRef(null);
 
@@ -36,8 +40,8 @@ function Sidebar({
     <aside
       className={`
         fixed left-0 top-0 z-50 h-screen
-        border-r border-white/10
-        bg-white/10
+        border-r border-gray-200
+        bg-white/80
         text-gray-900
         shadow-2xl
         backdrop-blur-2xl
@@ -108,15 +112,17 @@ function Sidebar({
   justify-center
   rounded-xl
   border
-  border-white/10
-  bg-white/5
+  border-gray-200
+  bg-gray-100/60
   text-gray-500
   backdrop-blur-md
   transition-all
   duration-200
-  hover:bg-white/10
+  hover:bg-gray-200
   hover:text-gray-900
   hover:scale-105
+  dark:border-white/10
+  dark:bg-white/5
   dark:text-gray-400
   dark:hover:bg-white/10
   dark:hover:text-white
@@ -184,25 +190,25 @@ function Sidebar({
             items-center
             rounded-xl
             border
-            border-white/10
-            bg-white/4
+            border-gray-200 dark:border-white/10
+            bg-gray-100 dark:bg-white/4
             animate-pulse
             ${collapsed ? "justify-center" : "gap-2 px-2"}
           `}
         >
           {/* File icon skeleton */}
-          <div className="h-4 w-4 shrink-0 rounded bg-white/10" />
+          <div className="h-4 w-4 shrink-0 rounded bg-gray-300 dark:bg-white/10" />
 
           {/* Text skeleton */}
           {!collapsed && (
-            <div className="h-3 flex-1 rounded bg-white/10" />
+            <div className="h-3 flex-1 rounded bg-gray-300 dark:bg-white/10" />
           )}
         </div>
       ))}
     </div>
   ) : recents.length === 0 ? (
     !collapsed && (
-      <p className="px-2 text-sm text-white/40">
+      <p className="px-2 text-sm text-gray-400 dark:text-white/40">
         No recent meetings
       </p>
     )
@@ -325,8 +331,8 @@ function Sidebar({
   z-50
   w-32
   rounded-xl
-  border border-white/15
-  bg-black/60
+  border border-gray-200 dark:border-white/15
+  bg-white/90 dark:bg-black/60
   p-1
   shadow-2xl
   backdrop-blur-xl
@@ -368,17 +374,17 @@ function Sidebar({
 
         {/* Bottom section */}
         <div className="mt-auto">
-          {/* Theme Button */}
-          {/* <button
+          {/* Theme Toggle */}
+          <button
             onClick={toggleTheme}
             title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             className={`mb-2 flex h-10 w-full items-center rounded-lg
               text-sm
               text-gray-600
-              hover:bg-gray-100
+              hover:bg-gray-200/70
               hover:text-gray-900
-              dark:text-gray-300
-              dark:hover:bg-gray-800
+              dark:text-gray-400
+              dark:hover:bg-white/10
               dark:hover:text-white
               transition
               ${collapsed ? "justify-center" : "gap-3 px-3"}`}
@@ -386,13 +392,13 @@ function Sidebar({
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
 
             {!collapsed && <span>{darkMode ? "Light mode" : "Dark mode"}</span>}
-          </button> */}
+          </button>
 
           {/* Footer */}
           <div
             className={`border-t border-gray-200
               pt-4 text-xs text-gray-400
-              dark:border-gray-800
+              dark:border-white/10
               ${collapsed ? "flex justify-center" : "px-2"}`}
           >
             {collapsed ? (

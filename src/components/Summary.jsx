@@ -50,7 +50,7 @@ function Summary({ summary, animate = true, onComplete }) {
           mb-3
           text-xl
           font-semibold
-          text-white
+          text-gray-900 dark:text-white
         "
       >
         Summary
@@ -60,22 +60,22 @@ function Summary({ summary, animate = true, onComplete }) {
       <div
         className="
           rounded-2xl
-          border border-white/10
-          bg-white/6
+          border border-gray-200 dark:border-white/10
+          bg-white/80 dark:bg-white/6
           p-6
-          shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+          shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)]
           backdrop-blur-xl
           transition-all
           duration-300
-          hover:border-white/15
-          hover:bg-white/8
+          hover:border-gray-300 dark:hover:border-white/15
+          hover:bg-white/90 dark:hover:bg-white/8
         "
       >
         <div
           className="
             text-[15px]
             leading-7
-            text-white/70
+            text-gray-600 dark:text-white/70
           "
         >
           <ReactMarkdown
@@ -88,7 +88,7 @@ function Summary({ summary, animate = true, onComplete }) {
                     first:mt-0
                     text-base
                     font-semibold
-                    text-white
+                    text-gray-900 dark:text-white
                   "
                 >
                   {children}
@@ -99,7 +99,7 @@ function Summary({ summary, animate = true, onComplete }) {
                 <strong
                   className="
                     font-semibold
-                    text-white
+                    text-gray-900 dark:text-white
                   "
                 >
                   {children}
@@ -113,7 +113,7 @@ function Summary({ summary, animate = true, onComplete }) {
                     ml-5
                     list-disc
                     space-y-2
-                    marker:text-white/40
+                    marker:text-gray-400 dark:marker:text-white/40
                   "
                 >
                   {children}
@@ -136,7 +136,7 @@ function Summary({ summary, animate = true, onComplete }) {
                 <hr
                   className="
                     my-5
-                    border-white/10
+                    border-gray-200 dark:border-white/10
                   "
                 />
               ),
