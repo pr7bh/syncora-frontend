@@ -1,13 +1,14 @@
 import lightLogo from "../assets/logo-light-mode.png";
 import darkLogo from "../assets/logo-dark-mode.png";
 import SpecularButton from "./SpecularButton";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   PanelLeft,
   PanelLeftClose,
   Plus,
   FileText,
   MoreVertical,
+  Pencil,
   Trash2,
   Sun,
   Moon,
@@ -20,13 +21,24 @@ function Sidebar({
   onNewMeeting,
   onSelectMeeting,
   onDeleteMeeting,
+  onRenameMeeting,
   selectedMeetingId,
   collapsed,
   setCollapsed,
 }) {
   const { darkMode, toggleTheme } = useTheme();
   const [openMenuId, setOpenMenuId] = useState(null);
+  const [renamingId, setRenamingId] = useState(null);
+  const [renameValue, setRenameValue] = useState("");
+  const renameInputRef = useRef(null);
   const closeTimerRef = useRef(null);
+
+  // Auto-focus rename input when it appears
+  useEffect(() => {
+    if (renamingId) {
+      setTimeout(() => renameInputRef.current?.focus(), 0);
+    }
+  }, [renamingId]);
 
   const startCloseTimer = () => {
     closeTimerRef.current = setTimeout(() => setOpenMenuId(null), 1500);
@@ -263,25 +275,51 @@ function Sidebar({
                   )}
 
                   {/* Meeting */}
-                  <button
-                    type="button"
-                    onClick={() => onSelectMeeting(meeting)}
-                    title={collapsed ? meeting.title || "Meeting" : undefined}
-                    className={`flex min-w-0 items-center text-left ${
-                      collapsed ? "justify-center" : "flex-1 gap-2"
-                    }`}
-                  >
-                    <FileText
-                      size={17}
-                      className="shrink-0 text-gray-500 dark:text-gray-400"
-                    />
+                  {renamingId === meeting.id && !collapsed ? (
+                    <div className="flex flex-1 items-center gap-2 px-1">
+                      <FileText size={17} className="shrink-0 text-gray-500 dark:text-gray-400" />
+                      <input
+                        ref={renameInputRef}
+                        value={renameValue}
+                        onChange={(e) => setRenameValue(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            const v = renameValue.trim();
+                            if (v) onRenameMeeting(meeting.id, v);
+                            setRenamingId(null);
+                          }
+                          if (e.key === "Escape") setRenamingId(null);
+                        }}
+                        onBlur={() => {
+                          const v = renameValue.trim();
+                          if (v) onRenameMeeting(meeting.id, v);
+                          setRenamingId(null);
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="min-w-0 flex-1 rounded-md border border-purple-400/40 bg-white/80 px-2 py-0.5 text-sm text-gray-900 outline-none focus:border-purple-400 dark:bg-white/10 dark:text-white"
+                      />
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => onSelectMeeting(meeting)}
+                      title={collapsed ? meeting.title || "Meeting" : undefined}
+                      className={`flex min-w-0 items-center text-left ${
+                        collapsed ? "justify-center" : "flex-1 gap-2"
+                      }`}
+                    >
+                      <FileText
+                        size={17}
+                        className="shrink-0 text-gray-500 dark:text-gray-400"
+                      />
 
-                    {!collapsed && (
-                      <span className="min-w-0 flex-1 truncate">
-                        {meeting.title || meeting.filename}
-                      </span>
-                    )}
-                  </button>
+                      {!collapsed && (
+                        <span className="min-w-0 flex-1 truncate">
+                          {meeting.title || meeting.filename}
+                        </span>
+                      )}
+                    </button>
+                  )}
 
                   {/* Three dots + menu */}
                   {!collapsed && (
@@ -329,7 +367,7 @@ function Sidebar({
   right-0
   top-8
   z-50
-  w-32
+  w-36
   rounded-xl
   border border-gray-200 dark:border-white/15
   bg-white/90 dark:bg-black/60
@@ -338,6 +376,31 @@ function Sidebar({
   backdrop-blur-xl
 "
                         >
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setOpenMenuId(null);
+                              setRenameValue(meeting.title || meeting.filename || "");
+                              setRenamingId(meeting.id);
+                            }}
+                            className="
+  flex
+  w-full
+  items-center
+  gap-2
+  rounded-lg
+  px-3
+  py-2
+  text-sm
+  text-gray-600 dark:text-gray-300
+  transition
+  hover:bg-gray-100 dark:hover:bg-white/10
+  hover:text-gray-900 dark:hover:text-white
+"
+                          >
+                            <Pencil size={15} />
+                            Rename
+                          </button>
                           <button
                             type="button"
                             onClick={() => {

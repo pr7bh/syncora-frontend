@@ -278,3 +278,22 @@ export async function deleteMeeting(meetingId) {
 
   return data;
 }
+
+export async function renameMeeting(meetingId, title) {
+  const response = await authFetch(
+    `${API_URL}/api/meetings/${meetingId}/title`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title }),
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.detail || "Failed to rename meeting");
+  }
+
+  return data;
+}

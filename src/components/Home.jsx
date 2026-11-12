@@ -24,6 +24,7 @@ import {
   analyzeYouTube,
   askMeetingQuestion,
   deleteMeeting,
+  renameMeeting,
 } from "../services/api";
 import Plasma from "./Plasma";
 
@@ -55,6 +56,22 @@ function Home() {
 
       if (selectedMeeting?.id === meetingId) {
         newMeeting();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function handleRenameMeeting(meetingId, newTitle) {
+    try {
+      await renameMeeting(meetingId, newTitle);
+
+      setRecents((prev) =>
+        prev.map((m) => (m.id === meetingId ? { ...m, title: newTitle } : m))
+      );
+
+      if (selectedMeeting?.id === meetingId) {
+        setSelectedMeeting((prev) => ({ ...prev, title: newTitle }));
       }
     } catch (error) {
       console.error(error);
@@ -242,6 +259,7 @@ function Home() {
         onNewMeeting={newMeeting}
         onSelectMeeting={selectMeeting}
         onDeleteMeeting={handleDeleteMeeting}
+        onRenameMeeting={handleRenameMeeting}
         collapsed={collapsed}
         setCollapsed={setCollapsed}
         selectedMeetingId={selectedMeeting?.id}
