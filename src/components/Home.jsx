@@ -279,6 +279,7 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.4 }}
+                className="flex min-h-[calc(100vh-7rem)] flex-col"
               >
                 {/* Hero */}
                 <div className="mb-10 text-center">
@@ -334,6 +335,9 @@ function Home() {
                     analyzeMeeting={analyzeMeeting}
                   />
                 </div>
+
+                {/* Spacer to push content to screen bottom */}
+                <div className="flex-1" />
 
               </motion.div>
             )}
