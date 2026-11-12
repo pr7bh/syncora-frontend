@@ -109,7 +109,10 @@ export default function UserAvatar() {
             alt="Profile"
             referrerPolicy="no-referrer"
             className="h-full w-full object-cover"
-            onError={() => setProfileImage(null)}
+            onError={() => {
+              setProfileImage(null);
+              setUser((prev) => prev ? { ...prev, profile_image: null } : prev);
+            }}
           />
         ) : (
           <div
