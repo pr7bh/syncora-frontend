@@ -150,9 +150,9 @@ export default function UserAvatar() {
         w-72
         overflow-hidden
         rounded-2xl
-        border border-white/10
-        bg-black/40
-        shadow-[0_20px_50px_rgba(0,0,0,0.35)]
+        border border-gray-200 dark:border-white/10
+        bg-white/90 dark:bg-black/40
+        shadow-[0_20px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.35)]
         backdrop-blur-2xl
         transition-all duration-300
       "
@@ -161,8 +161,8 @@ export default function UserAvatar() {
             <div
               className="
           flex items-center gap-3
-          border-b border-white/10
-          bg-white/3
+          border-b border-gray-200 dark:border-white/10
+          bg-gray-50/80 dark:bg-white/3
           p-4
         "
             >
@@ -173,8 +173,8 @@ export default function UserAvatar() {
             shrink-0
             overflow-hidden
             rounded-full
-            border border-white/15
-            bg-white/8
+            border border-gray-200 dark:border-white/15
+            bg-gray-100 dark:bg-white/8
             shadow-inner
           "
               >
@@ -193,7 +193,7 @@ export default function UserAvatar() {
                     className="
                 flex h-full w-full
                 items-center justify-center
-                text-white/60
+                text-gray-400 dark:text-white/60
               "
                   >
                     <User size={20} />
@@ -203,11 +203,11 @@ export default function UserAvatar() {
 
               {/* User Details */}
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-semibold text-white">
+                <p className="truncate text-sm font-semibold text-gray-900 dark:text-white">
                   {displayName}
                 </p>
 
-                <p className="mt-0.5 truncate text-xs text-white/40">{email}</p>
+                <p className="mt-0.5 truncate text-xs text-gray-400 dark:text-white/40">{email}</p>
               </div>
             </div>
 
@@ -223,11 +223,11 @@ export default function UserAvatar() {
             rounded-xl
             border border-transparent
             px-3 py-2.5
-            text-sm text-white/70
+            text-sm text-gray-600 dark:text-white/70
             transition-all duration-200
-            hover:border-white/10
-            hover:bg-white/[0.07]
-            hover:text-white
+            hover:border-gray-200 dark:hover:border-white/10
+            hover:bg-gray-100 dark:hover:bg-white/[0.07]
+            hover:text-gray-900 dark:hover:text-white
             disabled:cursor-not-allowed
             disabled:opacity-40
           "
@@ -238,9 +238,9 @@ export default function UserAvatar() {
               shrink-0
               items-center justify-center
               rounded-lg
-              border border-white/10
-              bg-white/6
-              text-white/70
+              border border-gray-200 dark:border-white/10
+              bg-gray-100 dark:bg-white/6
+              text-gray-500 dark:text-white/70
             "
                 >
                   {uploading ? (
@@ -250,8 +250,8 @@ export default function UserAvatar() {
                   animate-spin
                   rounded-full
                   border-2
-                  border-white/20
-                  border-t-white
+                  border-gray-300 dark:border-white/20
+                  border-t-gray-600 dark:border-t-white
                 "
                     />
                   ) : (
@@ -274,11 +274,11 @@ export default function UserAvatar() {
               rounded-xl
               border border-transparent
               px-3 py-2.5
-              text-sm text-white/70
+              text-sm text-gray-600 dark:text-white/70
               transition-all duration-200
-              hover:border-white/10
-              hover:bg-white/[0.07]
-              hover:text-white
+              hover:border-gray-200 dark:hover:border-white/10
+              hover:bg-gray-100 dark:hover:bg-white/[0.07]
+              hover:text-gray-900 dark:hover:text-white
               disabled:cursor-not-allowed
               disabled:opacity-40
             "
@@ -289,9 +289,9 @@ export default function UserAvatar() {
                 shrink-0
                 items-center justify-center
                 rounded-lg
-                border border-white/10
-                bg-white/6
-                text-white/70
+                border border-gray-200 dark:border-white/10
+                bg-gray-100 dark:bg-white/6
+                text-gray-500 dark:text-white/70
               "
                   >
                     <Trash2 size={17} />
@@ -303,7 +303,7 @@ export default function UserAvatar() {
             </div>
 
             {/* Logout */}
-            <div className="border-t border-white/10 p-2">
+            <div className="border-t border-gray-200 dark:border-white/10 p-2">
               <button
                 type="button"
                 onClick={handleLogout}
@@ -312,11 +312,11 @@ export default function UserAvatar() {
             rounded-xl
             border border-transparent
             px-3 py-2.5
-            text-sm text-red-400
+            text-sm text-red-500 dark:text-red-400
             transition-all duration-200
-            hover:border-red-400/10
-            hover:bg-red-500/10
-            hover:text-red-300
+            hover:border-red-200 dark:hover:border-red-400/10
+            hover:bg-red-50 dark:hover:bg-red-500/10
+            hover:text-red-600 dark:hover:text-red-300
           "
               >
                 <div
@@ -325,8 +325,8 @@ export default function UserAvatar() {
               shrink-0
               items-center justify-center
               rounded-lg
-              border border-red-400/10
-              bg-red-500/6
+              border border-red-200 dark:border-red-400/10
+              bg-red-50 dark:bg-red-500/6
             "
                 >
                   <LogOut size={17} />
