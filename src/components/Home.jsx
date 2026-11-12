@@ -335,13 +335,6 @@ function Home() {
                   />
                 </div>
 
-                {/* Supported formats */}
-                <div
-                  className="mt-8 flex flex-wrap items-center justify-center gap-3
-                  text-xs text-gray-400 dark:text-gray-500"
-                >
-                  {/* existing format items */}
-                </div>
               </motion.div>
             )}
 
