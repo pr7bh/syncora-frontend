@@ -337,7 +337,7 @@ function Sidebar({
                           );
                         }}
                         className="
-              hidden
+              flex
               h-7
               w-7
               items-center
@@ -347,7 +347,8 @@ function Sidebar({
               transition
               hover:bg-gray-200
               hover:text-gray-900
-              group-hover:flex
+              md:hidden
+              md:group-hover:flex
               dark:text-gray-400
               dark:hover:bg-transparent
               dark:hover:text-white
